@@ -7,7 +7,7 @@ import (
 
 	"github.com/google/gops/agent"
 
-	"github.com/tokopedia/gosample/nsq"
+	"github.com/gosample/nsq"
 	"gopkg.in/tokopedia/logging.v1"
 )
 

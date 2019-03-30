@@ -2,15 +2,15 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"github.com/google/gops/agent"
 	"log"
-	"fmt"
 	"net/http"
 
-	"github.com/tokopedia/gosample/debugging"
+	"github.com/gosample/calc"
+	"github.com/gosample/debugging"
 	"gopkg.in/tokopedia/grace.v1"
 	"gopkg.in/tokopedia/logging.v1"
-	"github.com/tokopedia/gosample/calc"
 )
 
 func main() {
@@ -22,13 +22,13 @@ func main() {
 
 	debug("app started") // message will not appear unless run with -debug switch
 
-	if err = agent.Listen(agent.Options{
+	if err := agent.Listen(agent.Options{
 		ShutdownCleanup: true, // automatically closes on os.Interrupt
 	}); err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println(calc.substract(4, 3))
+	fmt.Println(calc.Substract(4, 3))
 	http.HandleFunc("/prob", debugging.ProbHandler)
 
 	log.Fatal(grace.Serve(":9000", nil))
